@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2433447677919733805}
   - component: {fileID: 2433447677919733801}
   - component: {fileID: 2433447677919733800}
+  - component: {fileID: 7230033728574141718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 30
   jumpForce: 800
+  foothit: 0
   doorBound: {x: 0.6, y: 0.7}
 --- !u!114 &2433447677919733806
 MonoBehaviour:
@@ -204,3 +206,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keys: {fileID: 0}
+--- !u!114 &7230033728574141718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2433447677919733814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca3ed5cf9f3b07449b67a3dc4cd1f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrounded: 0

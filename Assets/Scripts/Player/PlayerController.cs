@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float jumpForce;
 
+    public bool foothit;
+
     public Vector2 doorBound;
     
 
@@ -70,5 +72,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         playerInput();
+        //checkGround();
     }
+
+    
 }
