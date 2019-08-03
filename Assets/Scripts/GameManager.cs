@@ -19,8 +19,14 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        
         GameMask.GMS.showAll();
         
+    }
+
+    public void resetPos()
+    {
+        pla.gameObject.transform.position = door.gameObject.transform.position;
     }
 
     public void EndGame2()
@@ -28,7 +34,13 @@ public class GameManager : MonoBehaviour
         door.setDoor();
         pla.HatOff();
         BGM.bb.playWinSound();
+        StartCoroutine(nextScene());
+    }
 
+    IEnumerator nextScene()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ResetLevel()

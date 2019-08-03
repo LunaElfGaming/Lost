@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,22 +14,27 @@ public class PlayerController : MonoBehaviour
 
     void playerInput()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(SceneManager.GetActiveScene().name != "intro")
         {
-            r2b.AddForce(Vector2.left * moveForce);
+            if(Input.GetKey(KeyCode.A))
+            {
+                r2b.AddForce(Vector2.left * moveForce);
+            }
+            if(Input.GetKey(KeyCode.D))
+            {
+                r2b.AddForce(Vector2.right*moveForce);
+            }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
         }
-        if(Input.GetKey(KeyCode.D))
-        {
-            r2b.AddForce(Vector2.right*moveForce);
-        }
+        
         if(Input.GetKeyDown(KeyCode.W))
         {
             checkDoor();
         }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+        
     }
 
     void Jump()

@@ -15,10 +15,12 @@ public class GameMask : MonoBehaviour
     {
         spm.backSortingOrder = spm.frontSortingOrder = 0;
         currentLayer = 0;
+        yield return new WaitForSeconds(.2f);
+        GameManager.GM.resetPos();
         for (int i = 1; i <= MaxLayer; i++)
         {
             spm.frontSortingOrder = i;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.2f);
         }
         spm.frontSortingOrder = MaxLayer;
         GameManager.GM.EndGame2();
