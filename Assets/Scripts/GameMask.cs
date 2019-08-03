@@ -11,6 +11,19 @@ public class GameMask : MonoBehaviour
     public int MaxLayer;
     float previousSet;
 
+    IEnumerator showAllIE()
+    {
+        spm.backSortingOrder = spm.frontSortingOrder = 0;
+        currentLayer = 0;
+        yield return new WaitForSeconds(.2f);
+        spm.frontSortingOrder = MaxLayer;
+    }
+
+    public void showAll()
+    {
+        StartCoroutine(showAllIE());
+    }
+
     IEnumerator setLayerIE(bool descent)
     {
         if (descent)
@@ -60,9 +73,9 @@ public class GameMask : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
             setLayer(false);
-        if(Input.GetKeyDown(KeyCode.O))
+        if(Input.GetKeyDown(KeyCode.RightArrow))
             setLayer(true);
     }
 }
