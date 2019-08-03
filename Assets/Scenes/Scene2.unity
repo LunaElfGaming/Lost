@@ -478,7 +478,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc1e88b74f2ced459801033d9206f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 40
+  moveForce: 30
   jumpForce: 600
   doorBound: {x: 0.6, y: 0.7}
 --- !u!114 &301552307
