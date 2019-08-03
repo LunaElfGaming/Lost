@@ -15,7 +15,7 @@ public class GameMask : MonoBehaviour
     {
         spm.backSortingOrder = spm.frontSortingOrder = 0;
         currentLayer = 0;
-        for(int i=1;i<=MaxLayer; i++)
+        for (int i = 1; i <= MaxLayer; i++)
         {
             spm.frontSortingOrder = i;
             yield return new WaitForSeconds(.3f);
@@ -31,37 +31,34 @@ public class GameMask : MonoBehaviour
 
     IEnumerator setLayerIE(bool descent)
     {
-        if (descent)
+        if (descent && spm.frontSortingOrder != MaxLayer)
+        {
             spm.backSortingOrder = spm.backSortingOrder + 1;
-        else
+        }
+
+        if (!descent && spm.backSortingOrder != 0)
             spm.frontSortingOrder = spm.frontSortingOrder - 1;
         currentLayer = 0;
         yield return new WaitForSeconds(deltaTimer);
-        if(descent)
+        if (descent && spm.frontSortingOrder != MaxLayer)
         {
-            if(spm.frontSortingOrder == MaxLayer)
-                spm.backSortingOrder = spm.backSortingOrder -1;
-            else
-                spm.frontSortingOrder = spm.frontSortingOrder +1;
+            spm.frontSortingOrder = spm.frontSortingOrder + 1;
         }
-        else
+        if (!descent && spm.backSortingOrder != 0)
         {
-            if(spm.backSortingOrder == 0)
-                spm.frontSortingOrder = spm.frontSortingOrder + 1;
-            else
-                spm.backSortingOrder = spm.backSortingOrder -1;
+            spm.backSortingOrder = spm.backSortingOrder - 1;
         }
         currentLayer = spm.frontSortingOrder;
     }
 
     void setLayer(bool descent)
     {
-        if(Time.time - previousSet > deltaTimer)
+        if (Time.time - previousSet > deltaTimer)
         {
             StartCoroutine(setLayerIE(descent));
             previousSet = Time.time;
         }
-            
+
     }
 
     // Start is called before the first frame update
@@ -81,9 +78,9 @@ public class GameMask : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
             setLayer(false);
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
             setLayer(true);
     }
 }
