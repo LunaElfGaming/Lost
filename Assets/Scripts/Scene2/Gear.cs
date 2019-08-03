@@ -23,12 +23,12 @@ public class Gear : MonoBehaviour
             if(Input.GetKey(KeyCode.W))
             {
                 transform.eulerAngles = new Vector3(.0f, .0f, transform.eulerAngles.z - rotateSpeed * Time.deltaTime);
-                childBlock.transform.position = new Vector3(childBlock.transform.position.x, childBlock.transform.position.y+ moveSpeed * Time.deltaTime, childBlock.transform.position.z );
+                childBlock.transform.position = new Vector3(childBlock.transform.position.x, Mathf.Min(childBlock.transform.position.y+ moveSpeed * Time.deltaTime, 0f), childBlock.transform.position.z );
             }
             if(Input.GetKey(KeyCode.S))
             {
                 transform.eulerAngles = new Vector3(.0f, .0f, transform.eulerAngles.z + rotateSpeed * Time.deltaTime);
-                childBlock.transform.position = new Vector3(childBlock.transform.position.x, childBlock.transform.position.y- moveSpeed * Time.deltaTime, childBlock.transform.position.z );
+                childBlock.transform.position = new Vector3(childBlock.transform.position.x, Mathf.Max(childBlock.transform.position.y- moveSpeed * Time.deltaTime, -4.5f), childBlock.transform.position.z );
             }
         }
         
