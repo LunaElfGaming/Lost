@@ -68,6 +68,7 @@ public class GameMask : MonoBehaviour
             Debug.Log("ERROR OF MASK");
         spm.frontSortingOrder = 1;
         spm.backSortingOrder = 0;
+        currentLayer = 1;
         previousSet = Time.time;
 
     }
