@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 30
-  jumpForce: 600
+  jumpForce: 800
   doorBound: {x: 0.6, y: 0.7}
 --- !u!114 &301552307
 MonoBehaviour:

@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
     bool moving;
     Animator anim;
     Rigidbody2D r2b;
+    bool jumping;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -16,11 +17,16 @@ public class PlayerAnimator : MonoBehaviour
     void setSpeed()
     {
         moving = ! Mathf.Approximately(0f, r2b.velocity.x);
-        anim.SetBool("moving", moving);
+        
         if(r2b.velocity.x < 0)
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        else
+        if(r2b.velocity.x > 0)
             transform.localScale = new Vector3(1f, 1f, 1f);
+        jumping = ! Mathf.Approximately(0f, r2b.velocity.y);
+        anim.SetBool("jumping", jumping);
+        anim.SetFloat("vectory", r2b.velocity.y);
+        if(!jumping)
+            anim.SetBool("moving", moving);
     }
 
     public void HatOff()
@@ -34,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         setSpeed();
     }
