@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameMask : MonoBehaviour
 {
+    public static GameMask GMS;
     SpriteMask spm;
     public float deltaTimer;
-    int currentLayer;
+    public int currentLayer;
     public int MaxLayer;
     float previousSet;
 
@@ -16,6 +17,7 @@ public class GameMask : MonoBehaviour
             spm.backSortingOrder = spm.backSortingOrder + 1;
         else
             spm.frontSortingOrder = spm.frontSortingOrder - 1;
+        currentLayer = 0;
         yield return new WaitForSeconds(deltaTimer);
         if(descent)
         {
@@ -31,6 +33,7 @@ public class GameMask : MonoBehaviour
             else
                 spm.backSortingOrder = spm.backSortingOrder -1;
         }
+        currentLayer = spm.frontSortingOrder;
     }
 
     void setLayer(bool descent)
@@ -46,6 +49,7 @@ public class GameMask : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GMS = this;
         spm = GetComponent<SpriteMask>();
         if (spm.isCustomRangeActive == false)
             Debug.Log("ERROR OF MASK");
