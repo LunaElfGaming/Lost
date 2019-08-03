@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D r2b;
     public float moveForce;
+    public float jumpForce;
 
     public Vector2 doorBound;
     
@@ -24,6 +25,18 @@ public class PlayerController : MonoBehaviour
         {
             checkDoor();
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    void Jump()
+    {
+        if(r2b.velocity.y != 0)
+            return;
+        Debug.Log("Jumping");
+        r2b.AddForce(Vector2.up * jumpForce);
     }
 
     void checkDoor()
