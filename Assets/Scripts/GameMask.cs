@@ -66,6 +66,8 @@ public class GameMask : MonoBehaviour
         spm = GetComponent<SpriteMask>();
         if (spm.isCustomRangeActive == false)
             Debug.Log("ERROR OF MASK");
+        spm.frontSortingOrder = 1;
+        spm.backSortingOrder = 0;
         previousSet = Time.time;
 
     }
